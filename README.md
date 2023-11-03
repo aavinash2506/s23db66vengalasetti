@@ -1,8 +1,4 @@
-# f23wb66vengalasetti
-i love to cook
-https://f23wb66vengalasetti.onrender.com
+# s23db66vengalasetti
 
-Furniture
-- item_type (string)
-- material (string)
-- price (number)
+https://s23db66vengalasetti.onrender.com/
+
