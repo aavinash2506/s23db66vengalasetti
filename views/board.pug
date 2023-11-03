@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+  p Rows: #{query.rows}, Columns: #{query.cols}
+  - var rows=Number(query.rows);
+  - var cols=Number(query.cols);
+  if !Number.isInteger(rows)
+      p enter valid number
+  else if !Number.isInteger(cols)
+      p enter valid number
+  else if rows<1||rows>10
+      p enter valid number
+  else if cols<1||cols>10
+      p enter valid number
+  else
+    table#outer
+      - for (let v= 0; v< rows; v++)
+        tr#middle
+          - for (let j = 0; j < cols; j++)
+            - let value = (v=== j) ? 1 : (v === j + 1) ? 2 : (v === j - 1) ? v : 0
+            td= value
+  

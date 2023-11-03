@@ -1,0 +1,52 @@
+//- extends layout
+
+//- block content
+//-   h1= title
+//-   .container-fluid
+//-     .row
+//-       each f in a
+//-         .col-sm-2
+//-           p Item type: #{f.item_type}
+//-           p Material: #{f.material}
+//-           p Price: #{f.price}
+          
+//-   br
+//-   h3= 'Buy'
+ 
+//-   div(class="container-fluid")
+//-     each f,index in a
+//-       div(class="row", onclick=`buy(${index})`)
+//-         div(class="col-sm-2") <br>Furniture #{index}: #{f.item_type} Material: #{f.material} Price: #{f.price}
+//-   script.
+//-         function buy(p){
+//-           alert('You Purchased item ' + (p+1))    
+//-         }
+
+
+
+
+extends layout
+ 
+block content
+  h1= title
+  .container-fluid
+    .row
+      - for (let f of r)
+        .col-sm-2
+          p Item type: #{f.item_type}
+          p Material: #{f.material}
+          p Price: #{f.price}
+          
+  br
+  h3= 'Buy'
+ 
+  div(class="container-fluid")
+    each f,index in r
+      div(class="row", onclick=`buy(${index})`)
+        div(class="col-sm-2") <br>Furniture #{index}: #{f.item_type} Material: #{f.material} Price: #{f.price}
+  script.
+        function buy(j){
+          alert('You Purchased item ' + (j+1))    
+        }
+ 
+ 

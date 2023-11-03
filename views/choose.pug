@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+
+  - var image_names = ["a1.jpeg", "a2.jpeg", "a3.jpeg", "a4.jpeg", "a5.jpeg"];
+  - for (var i = 0; i < 3; i++) {
+     - var k = Math.floor(Math.random() * image_names.length);
+     img(src=`./images/${image_names[k]}`, alt=`img${image_names[k]}`, style='width:300px; height:300px;')
+  - }
