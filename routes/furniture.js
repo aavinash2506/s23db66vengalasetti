@@ -1,31 +1,9 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+const furniture_controllers = require('../controllers/furniture');
+var router = express.Router();
 
-const furniture = [
-  {
-    item_type: 'table',
-    material: 'glass',
-    price: '$60',
-  },
-  {
-    item_type: 'desk',
-    material: 'metal',
-    price: '$400',
-  },
-  {
-    item_type: 'sofa',
-    material: 'leather',
-    price: '$650',
-  },
-  {
-    item_type: 'coffee table',
-    material: 'marble',
-    price: '$250',
-  }
-];
 
-router.get('/', (req, res) => {
-  res.render('furniture', { title: 'Search Results - furniture', r: furniture });
-});
+router.get('/', furniture_controllers.furniture_view_all_Page);
 
+router.get('/furnitures/:id', furniture_controllers.furniture_detail);
 module.exports = router;
