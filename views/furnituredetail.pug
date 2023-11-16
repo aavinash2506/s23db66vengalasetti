@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  - let itemType = toShow.item_type
+  - let material = toShow.material
+  - let price = toShow.price
+
+  div
+    div.row
+      div(class='furnitureAttr mr-3') Item Type is:
+      div #{itemType}
+    div.row
+      div(class='furnitureAttr mr-3') Material is:
+      div #{material}
+    div.row
+      div(class='furnitureAttr mr-3') Price is:
+      div #{price}
