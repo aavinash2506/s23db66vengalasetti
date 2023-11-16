@@ -108,6 +108,17 @@ exports.furniture_detail = async function(req, res) {
             res.send(`{'error': '${err}'}`);
             }
             };
+        exports.furniture_create_Page = function(req, res) {
+                console.log("create view")
+                try{
+                res.render('furniturecreate', { title: 'furniture Create'});
+                }
+                catch(err){
+                res.status(500)
+                res.send(`{'error': '${err}'}`);
+                }
+                };   
+       
         
     
 

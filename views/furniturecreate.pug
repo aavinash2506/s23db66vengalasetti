@@ -1,0 +1,30 @@
+extends layout
+block content
+  h1= title
+  form(id='furnitureForm', action="/resource/furniture", method="POST")
+    
+    div.form-group
+      label(for='itemType') Item Type
+      input#itemType(type='text', name='itemType')
+    div.form-group
+      label(for='material') Material
+      input#material(type='text', name='material')
+    div.form-group
+      label(for='price') Price
+      input#price(type='number', name='price')
+
+    input(type="submit")
+    script.
+      document.forms['furnitureForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        fetch(event.target.action, {
+          method: 'POST',
+          body: new URLSearchParams(new FormData(event.target))
+        }).then((resp) => {
+          return resp.json();
+        }).then((body) => {
+          alert("Save succeeded");
+        }).catch((error) => {
+          alert("Save failed " + error);
+        });
+      });
