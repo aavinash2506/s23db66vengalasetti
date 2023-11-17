@@ -1,6 +1,3 @@
-
-
-
 extends layout
  
 block content
@@ -19,10 +16,16 @@ block content
   div(class="container-fluid")
     each furniture,index in results
       div(class="row", onclick=`buy(${index})`)
-        div(class="col-sm-2") <br>Furniture #{index}: #{furniture.item_type} Material: #{furniture.material} Price: #{furniture.price}
+        div(class="col-sm-2") <br>furniture #{index}: #{furniture.item_type} Material: #{furniture.material} Price: #{furniture.price}
+        button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/furniture/update?id=${furniture._id}\")`) Update
+
   script.
-        function buy(j){
-          alert('You Purchased item ' + (j+1))    
-        }
- 
- 
+    function buy(p) {
+      alert(`You purchased item`+ (p+1));
+    }
+
+    function dispatch(path) {
+      window.location.href=path
+    }
+        
+
