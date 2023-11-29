@@ -1,9 +1,11 @@
 extends layout
- 
+
 block content
   h1= title
   .container-fluid
     .row
+      a(class="btn btn-success" href="/furniture/create") Create
+
       - for (let f of results)
         .col-sm-2
           p Item type: #{f.item_type}
@@ -14,18 +16,20 @@ block content
   h3= 'Buy'
  
   div(class="container-fluid")
-    each furniture,index in results
+    each furniture, index in results
       div(class="row", onclick=`buy(${index})`)
-        div(class="col-sm-2") <br>furniture #{index}: #{furniture.item_type} Material: #{furniture.material} Price: #{furniture.price}
-        button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/furniture/update?id=${furniture._id}\")`) Update
+        div(class="col-sm-2")
+          br
+          | furniture #{index}: #{furniture.item_type} Material: #{furniture.material} Price: #{furniture.price}
+        button.btn(class="btn-primary ml-1", onclick=`dispatch("/furniture/update?id=${furniture._id}")`) Update
+        a(class="btn btn-danger", href=`/furniture/delete?id=${furniture._id}`) Delete
+        a(class="btn btn-dark", href=`/furniture/detail?id=${furniture._id}`) Details
 
   script.
     function buy(p) {
-      alert(`You purchased item`+ (p+1));
+      alert(`You purchased item ` + (p + 1));
     }
 
     function dispatch(path) {
-      window.location.href=path
+      window.location.href = path;
     }
-        
-
